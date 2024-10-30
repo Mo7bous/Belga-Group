@@ -1,0 +1,1800 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Belga - Authentic Belgian Fries</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    scroll-behavior: smooth;
+    color: #333;
+  }
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .content {
+    background-color: rgba(0,0,0,0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+  }
+  .logo {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 0rem;
+    object-fit: contain;
+  }
+
+  a {
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .cta-button {
+    background-color: #FFC107;
+    color: black;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+  }
+  .cta-button:hover {
+    background-color: #FFA000;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.8);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+  }
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+  }
+  .social-cart {
+    display: flex;
+    align-items: center;
+  }
+  .social-icon {
+    font-size: 24px;
+    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+  }
+  .social-icon:hover {
+    color: #FFC107;
+  }
+  .burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #FFC107;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  #cart-icon {
+    position: relative;
+  }
+  #cart-counter {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #FFF9C4;
+    color: #FF0000;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+    display: none;
+  }
+  #cart-icon:hover {
+    transform: scale(1.1);
+  }
+  #cart-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+  #cart-icon svg path {
+    fill: #FFC107;
+    transition: fill 0.3s ease;
+  }
+  #cart-icon:hover svg path {
+    fill: #FFA000;
+  }
+  #menu, #about, #franchise {
+    padding: 5rem 1rem;
+    background-color: #f5f5f5;
+  }
+  .menu-section {
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  .menu-section h3 {
+    color: white;
+    background-color: #FFC107;
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+  .menu-items {
+    padding: 2rem;
+  }
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+    position: relative;
+  }
+  .menu-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .item-details {
+    flex: 1;
+  }
+  .item-name {
+    padding-top: 3px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .item-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+  .item-price-add {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .item-price {
+    font-weight: bold;
+    color: #FFC107;
+    font-size: 1rem;
+    margin-right: 10px;
+  }
+  .add-to-cart {
+    background-color: #FFC107;
+    color: white;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .add-to-cart:hover {
+    background-color: #FFA000;
+  }
+  #about, #franchise {
+    width: 100%;
+    margin: 0;
+    padding: 4rem 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+  }
+  #about h2, #franchise h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 2rem;
+  }
+  .about-section {
+    margin-bottom: 3rem;
+  }
+  .about-section h3 {
+    color: #FFC107;
+    margin-bottom: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .about-section h3 i {
+    margin-right: 10px;
+    font-size: 1.2em;
+  }
+  .about-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    display: block;
+    margin: 1rem 0;
+  }
+  #franchise h3 {
+    color: #FFC107;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  #franchise h4 {
+    color: #333;
+    margin-top: 1rem;
+  }
+  #franchise p {
+    text-align: justify;
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    line-height: 1.6;
+  }
+  #franchise-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  .form-group textarea {
+    height: auto;
+    min-height: 100px;
+  }
+  #franchise-form .cta-button {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  @media (max-width: 768px) {
+    nav {
+      justify-content: space-between;
+    }
+
+    .burger-menu {
+      order: 1;
+    }
+
+    .nav-links {
+      order: 2;
+    }
+
+    .social-cart {
+      order: 3;
+    }
+
+    .social-icon {
+      display: none;
+    }
+
+    #cart-icon {
+      margin-left: auto;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .burger-menu {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    body {
+      overflow-x: hidden;
+    }
+
+    .content-wrapper {
+      padding: 1rem;
+    }
+
+    .menu-section {
+      margin: 0 auto 2rem auto;
+    }
+
+    .menu-items {
+      padding: 1rem;
+    }
+
+    .hero .content {
+      padding: 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+
+    .cta-button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+    }
+
+    #about, #franchise {
+      padding: 2rem 1rem;
+    }
+
+    .footer-content {
+      padding: 0 1rem;
+    }
+  }
+  #about p, #franchise p {
+    text-align: justify;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+  }
+  .cart-category {
+    margin-bottom: 20px;
+  }
+  .cart-category h3 {
+    font-size: 1.2em;
+    color: #FFC107;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+  }
+  .item-info {
+    flex-grow: 1;
+  }
+  .item-name {
+    font-weight: 100;
+  }
+  .item-price {
+    font-weight: 100;
+    color: #333;
+  }
+  .item-quantity {
+    display: flex;
+    align-items: center;
+  }
+  .quantity-btn {
+    background-color: #FFC107;
+    color: white;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+  }
+  .quantity-btn:hover {
+    background-color: #FFA000;
+  }
+  #cart-total {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: right;
+  }
+  .cart-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  .cta-button, .secondary-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+  }
+  .cta-button {
+    background-color: #FFC107;
+    color: white;
+  }
+  .cta-button:hover {
+    background-color: #FFA000;
+  }
+  .secondary-button {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  .secondary-button:hover {
+    background-color: #e0e0e0;
+  }
+  #franchise {
+    background-color: #f9f9f9;
+    padding: 4rem 0;
+  }
+  #franchise .content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 2rem;
+  }
+  #franchise h2 {
+    color: #FFC107;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  #franchise h3 {
+    color: #333;
+    margin-top: 2rem;
+  }
+  #franchise h4 {
+    color: #FFC107;
+    margin-top: 1.5rem;
+  }
+  #franchise p, #franchise ul {
+    text-align: justify;
+    line-height: 1.6;
+  }
+  #franchise ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  #franchise ul li {
+    margin-bottom: 1rem;
+  }
+  #franchise .fas {
+    margin-right: 0.5rem;
+    color: #FFC107;
+  }
+  #franchise-form {
+    margin-top: 2rem;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .form-group {
+    flex: 1;
+    margin-right: 1rem;
+  }
+  .form-group:last-child {
+    margin-right: 0;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  .form-group textarea {
+    height: auto;
+    min-height: 100px;
+  }
+  #franchise-form .cta-button {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    background-color: #FFC107;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  #franchise-form .cta-button:hover {
+    background-color: #FFA000;
+  }
+  @media (max-width: 768px) {
+    .form-row {
+      flex-direction: column;
+    }
+    
+    .form-group {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+  }
+  
+  .info-icon {
+    cursor: pointer;
+    margin-left: 5px;
+    color: #FFC107;
+  }
+  
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 1002;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .popup-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+  }
+  
+  .popup-close:hover,
+  .popup-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  @keyframes cartAdd {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  .cart-animation {
+    animation: cartAdd 0.3s ease-in-out;
+  }
+  
+  footer {
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    padding: 2rem 0;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+  }
+
+  .footer-logo .logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover {
+    color: #FFC107;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-social a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+  }
+
+  .footer-social a:hover {
+    color: #FFC107;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-restaurants {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-restaurants h4 {
+    color: #FFC107;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-restaurants a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-restaurants a:hover {
+    color: #FFC107;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .footer-links, .footer-social {
+      margin-top: 1rem;
+    }
+    
+    .footer-restaurants {
+      margin-top: 1rem;
+      align-items: center;
+    }
+
+    .item-image {
+  width: 60px; /* Adjust as needed */
+  height: 45px; /* Adjust as needed */
+  margin-right: 10px;
+  object-fit: cover; /* Ensures the image maintains its aspect ratio */
+  border-radius: 5px; /* Optional: rounds the image corners */
+}
+
+  }
+</style>
+</head>
+<body>
+  <nav>
+    <div class="burger-menu">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <div class="nav-links">
+      <a href="#hero">Accueil</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">À propos</a>
+      <a href="#franchise">Franchise</a>
+    </div>
+    <div class="social-cart">
+      <a href="https://www.facebook.com/belga" class="social-icon" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/belga" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@belga" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <div id="cart-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+        <span id="cart-counter">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <div id="hero" class="hero">
+    <div class="content">
+      <img src="logo.png" alt="Belga Logo" class="logo">
+      <h1>BELGA</h1>
+      <p class="subtitle">AUTHENTIC BELGIAN FRIES</p>
+      <a href="#menu" class="cta-button">Voir le menu</a>
+    </div>
+  </div>
+
+  <div id="menu">
+    <div class="menu-section">
+      <h3>NOS SPÉCIALITÉS</h3>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="mitraillette.png" class="item-image">
+            <div class="item-name">Mitraillette<i class="fas fa-info-circle info-icon" data-item="mitraillette"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">90.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="mitraillettegeant.png" class="item-image">
+            <div class="item-name">Mitraillette Géant<i class="fas fa-info-circle info-icon" data-item="mitraillette-geant"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">140.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="bicky.png" class="item-image">
+            <div class="item-name">Bicky Burger<i class="fas fa-info-circle info-icon" data-item="bicky-burger"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">50.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h3>FRITES</h3>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="frites.png" class="item-image">
+            <div class="item-name">Petite Frite (100g)<i class="fas fa-info-circle info-icon" data-item="petite-frite"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">35.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="frites.png" class="item-image">
+            <div class="item-name">Grande Frite (250g)<i class="fas fa-info-circle info-icon" data-item="grande-frite"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">50.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h3>SNACKS</h3>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="fricadelle.png" class="item-image">
+            <div class="item-name">Fricadelle<i class="fas fa-info-circle info-icon" data-item="fricadelle"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">30.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="viandelle.png" class="item-image">
+            <div class="item-name">Viandelle<i class="fas fa-info-circle info-icon" data-item="viandelle"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">35.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="mexicano.png" class="item-image">
+            <div class="item-name">mexicano<i class="fas fa-info-circle info-icon" data-item="mexicains"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">40.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="poulycrock.png" class="item-image">
+            <div class="item-name">poulycrock<i class="fas fa-info-circle info-icon" data-item="poulycrock"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">40.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="bitterballen.png" class="item-image">
+            <div class="item-name">Bitterballen<i class="fas fa-info-circle info-icon" data-item="bitterballen"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">40.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="fromage.png" class="item-image">
+            <div class="item-name">Croquette de Fromage<i class="fas fa-info-circle info-icon" data-item="croquette-fromage"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">35.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="crevette.png" class="item-image">
+            <div class="item-name">Croquette de Crevettes<i class="fas fa-info-circle info-icon" data-item="croquette-crevettes"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">40.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="menu-section">
+      <h3>SAUCES</h3>
+      <div class="menu-items" id="sauces-items">
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="ketchup.png" class="item-image">
+            <div class="item-name">Ketchup<i class="fas fa-info-circle info-icon" data-item="ketchup"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">5.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="mayonnaise.png" class="item-image">
+            <div class="item-name">Mayonnaise<i class="fas fa-info-circle info-icon" data-item="mayonnaise"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">5.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="moutarde.png" class="item-image">
+            <div class="item-name">Moutarde<i class="fas fa-info-circle info-icon" data-item="moutarde"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">5.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="curryketchup.png" class="item-image">
+            <div class="item-name">Curry Ketchup<i class="fas fa-info-circle info-icon" data-item="curry-ketchup"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">7.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="samourai.png" class="item-image">
+            <div class="item-name">Samouraï<i class="fas fa-info-circle info-icon" data-item="samourai"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">7.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="tartare.png" class="item-image">
+            <div class="item-name">Tartare<i class="fas fa-info-circle info-icon" data-item="tartare"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">7.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="andalouse.png" class="item-image">
+            <div class="item-name">Andalouse<i class="fas fa-info-circle info-icon" data-item="andalouse"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">7.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="brazil.png" class="item-image">
+            <div class="item-name">Brazil<i class="fas fa-info-circle info-icon" data-item="brazil"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">7.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="joppie.png" class="item-image">
+            <div class="item-name">Joppie<i class="fas fa-info-circle info-icon" data-item="joppie"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">7.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="pilipili.png" class="item-image">
+            <div class="item-name">Pili-Pili<i class="fas fa-info-circle info-icon" data-item="pili-pili"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">7.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+    <div class="menu-section">
+      <h3>BOISSONS</h3>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="sidiali.png" class="item-image">
+            <div class="item-name">Sidi Ali (25 cl)<i class="fas fa-info-circle info-icon" data-item="eau-plate"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">10.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="ouelmes.png" class="item-image">
+            <div class="item-name">Ouelmes (25 cl)<i class="fas fa-info-circle info-icon" data-item="eau-gazeuse"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">10.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="coca.png" class="item-image">
+            <div class="item-name">Coca-Cola (25 cl)<i class="fas fa-info-circle info-icon" data-item="coca-cola"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">13.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="cocazero.png" class="item-image">
+            <div class="item-name">Coca-Cola Zero (25 cl)<i class="fas fa-info-circle info-icon" data-item="coca-cola-zero"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">13.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="fanta.png" class="item-image">
+            <div class="item-name">Fanta (25 cl)<i class="fas fa-info-circle info-icon" data-item="fanta"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">13.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="sprite.png" class="item-image">
+            <div class="item-name">Sprite (25 cl)<i class="fas fa-info-circle info-icon" data-item="sprite"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">13.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="tropico.png" class="item-image">
+            <div class="item-name">Tropico (25 cl)<i class="fas fa-info-circle info-icon" data-item="tropico"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">15.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="oasistropical.png" class="item-image">
+            <div class="item-name">Oasis Tropical (25 cl)<i class="fas fa-info-circle info-icon" data-item="oasis-tropical"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">15.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="icetea.png" class="item-image">
+            <div class="item-name">Ice Tea (25 cl)<i class="fas fa-info-circle info-icon" data-item="ice-tea-classique"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">15.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="iceteapeche.png" class="item-image">
+            <div class="item-name">Ice Tea Pêche (25 cl)<i class="fas fa-info-circle info-icon" data-item="ice-tea-peche"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">15.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="iceteagreen.png" class="item-image">
+            <div class="item-name">Ice Tea Green (25 cl)<i class="fas fa-info-circle info-icon" data-item="ice-tea-green"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">15.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h3>BIÈRES SANS ALCOHOL</h3>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="jupiler.jpg" class="item-image">
+            <div class="item-name">Jupiler 0.0%<i class="fas fa-info-circle info-icon" data-item="jupiler"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">50.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="duvel.png" class="item-image">
+            <div class="item-name">Duvel 0.0%<i class="fas fa-info-circle info-icon" data-item="duvel"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">50.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="orval.png" class="item-image">
+            <div class="item-name">Orval 0.0%<i class="fas fa-info-circle info-icon" data-item="orval"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">50.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="pecheresse.jpg" class="item-image">
+            <div class="item-name">Pêcheresse 0.0%<i class="fas fa-info-circle info-icon" data-item="lindemans-pecheresse"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">50.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-details">
+            <img src="leffe.png" class="item-image">
+            <div class="item-name">Leffe Blonde 0.0%<i class="fas fa-info-circle info-icon" data-item="leffe-blonde"></i></div>
+          </div>
+          <div class="item-price-add">
+            <span class="item-price">50.00 MAD</span>
+            <button class="add-to-cart">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="about">
+    <div class="content-wrapper">
+      <h2>À propos de Belga</h2>
+      <div class="about-section">
+        <h3><i class="fas fa-history"></i> LES ORIGINES</h3>
+        <br></br>
+        <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Belgian fries stand" class="about-image">
+        <p>L'histoire du Belga commence avec un passionné de la culture culinaire belge. Né au Maroc mais grandi en Belgique, il se souvient encore du premier jour en belgique, ce jour où, enfant, il s'arrêta devant une petite friterie de quartier. Pour 50 francs belges, il s'offrit un cornet de frites avec de la mayonnaise. Il revoit encore cette pièce grise, aux rebords dentelés, qui pesait lourd dans sa poche, mais encore plus dans son imagination. Ce jour-là, il goûta aux saveurs authentiques de la véritable frite belge : dorée, croustillante à l'extérieur, fondante à l'intérieur, sublimée par une généreuse dose de sauce. Cette première bouchée devint un souvenir impérissable, l'étalon avec lequel il allait comparer toutes les frites à venir.</p>
+        <p>Au fil des années, ses voyages autour du monde ne firent qu'intensifier ce souvenir. D'une ville à l'autre, d'un continent à l'autre, il cherchа inexorablement cette saveur unique. Mais jamais il ne retrouva cette combinaison parfaite d'odeur, de texture et de goût. C'est alors qu'il prit une décision audacieuse : s'il ne pouvait pas la retrouver, il allait la recréer lui-même.</p>
+        <p>Dans un cadre à l'inspiration industrielle, rappelant les brasseries belges, l'ambiance y est conviviale, à l'image des friteries d'antan. Le Belga est un pont entre les cultures, un hommage à la Belgique, mais surtout un lieu où l'on peut enfin redécouvrir la véritable frite, dans toute son authenticité.</p>
+      </div>
+      <div class="about-section">
+        <h3><i class="fas fa-store"></i> LA FRITERIE</h3>
+        <br></br>
+        <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fresh potatoes" class="about-image">
+        <p>La friterie en Belgique est bien plus qu'un simple commerce ; c'est une véritable institution. Et l'élément qui fait la renommée de ses frites est incontestablement la double cuisson. Cette méthode unique, transmise de génération en génération, consiste en une première cuisson douce, qui permet de cuire la pomme de terre à cœur, suivie d'une seconde cuisson à haute température, qui assure ce croustillant doré à l'extérieur tout en conservant un intérieur tendre et fondant.</p>
+        <p>Autrefois, les frites étaient servies dans des cornets en papier, souvent accompagnées d'une généreuse portion de mayonnaise ou d'une autre sauce typique. Bien que les temps aient changé, cette tradition se perpétue. Le Belga s'en fait le fidèle héritier, en offrant aux amateurs de frites et de cuisine belge un retour aux sources, où la qualité et l'authenticité sont au cœur de chaque bouchée.</p>
+        <p>Avec ses spécialités belges et sa sélection variée de bières, Belga est bien plus qu'un simple lieu de restauration. C'est un hommage à la culture belge, un clin d'œil à ce jour où un jeune garçon, une pièce en poche, découvrit pour la première fois ce qui allait devenir une passion de toute une vie.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="franchise">
+    <div class="content-wrapper">
+      <h2><i class="fas fa-handshake"></i> Franchise</h2>
+      <br></br>
+      <div class="franchise-intro">
+        <h3><i class="fas fa-rocket"></i> Rejoignez notre aventure en franchise</h3>
+        <p>Devenez franchisé Le Belga et apportez l'authenticité belge près de chez vous !</p>
+        <p>Chez Le Belga, nous croyons en l'expansion de notre concept unique de friterie et bar tout en préservant l'authenticité et la qualité qui font notre succès. C'est pourquoi nous lançons un projet de franchises pour permettre à d'autres passionnés de la cuisine belge de rejoindre notre aventure.</p>
+      </div>
+      <div class="franchise-benefits">
+        <h4><i class="fas fa-star"></i> En devenant franchisé, vous bénéficierez d'un soutien complet de notre part :</h4>
+        <ul>
+          <li><i class="fas fa-truck"></i> Fourniture de stocks : Nous nous occupons de la livraison des produits alimentaires nécessaires à la préparation de nos fameuses frites et autres spécialités belges.</li>
+          <li><i class="fas fa-paint-brush"></i> Design et communication : Vous aurez accès à nos plans d'aménagement intérieur et extérieur, ainsi qu'à nos outils de communication pour promouvoir votre établissement.</li>
+          <li><i class="fas fa-graduation-cap"></i> Formation : Une formation complète sur nos méthodes de préparation, nos recettes et notre philosophie de service client.</li>
+          <li><i class="fas fa-life-ring"></i> Support continu : Notre équipe sera toujours là pour vous conseiller et vous aider à réussir.</li>
+        </ul>
+      </div>
+      <br></br>
+      <div class="franchise-form">
+        <h3><i class="fas fa-clipboard-list"></i> Formulaire de demande de franchise</h3>
+        <br></br>
+        <p>Pour démarrer cette aventure avec nous, remplissez le formulaire ci-dessous avec toutes les informations nécessaires, et nous reviendrons vers vous pour étudier votre demande.</p>
+        <form id="franchise-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nom"><i class="fas fa-user"></i> Nom complet :</label>
+              <input type="text" id="nom" name="nom" required>
+            </div>
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i> Adresse e-mail :</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telephone"><i class="fas fa-phone"></i> Numéro de téléphone :</label>
+              <input type="tel" id="telephone" name="telephone" required>
+            </div>
+            <div class="form-group">
+              <label for="adresse"><i class="fas fa-map-marker-alt"></i> Localisation du local proposé :</label>
+              <input type="text" id="adresse" name="adresse" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="superficie"><i class="fas fa-ruler-combined"></i> Superficie du local :</label>
+              <input type="text" id="superficie" name="superficie" required>
+            </div>
+            <div class="form-group">
+              <label for="statut"><i class="fas fa-building"></i> Statut actuel du local :</label>
+              <select id="statut" name="statut" required>
+                <option value="">Sélectionner</option>
+                <option value="possession">En possession</option>
+                <option value="location">En location</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="experience"><i class="fas fa-utensils"></i> Expérience dans la restauration (si applicable) :</label>
+            <textarea id="experience" name="experience"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="decouverte"><i class="fas fa-search"></i> Comment avez-vous découvert Le Belga ?</label>
+            <input type="text" id="decouverte" name="decouverte" required>
+          </div>
+          <div class="form-group">
+            <label for="motivation"><i class="fas fa-heart"></i> Pourquoi souhaitez-vous devenir franchisé Le Belga ?</label>
+            <textarea id="motivation" name="motivation" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="autres"><i class="fas fa-comment"></i> Autres informations ou questions :</label>
+            <textarea id="autres" name="autres"></textarea>
+          </div>
+          <button type="submit" class="cta-button"><i class="fas fa-paper-plane"></i> Envoyer la demande</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Mon Panier</h2>
+      <div id="cart-items">
+      </div>
+      <div id="cart-total">Total: 0.00 MAD</div>
+      <div class="cart-buttons">
+        <button id="checkout-btn" class="cta-button">Commander maintenant</button>
+        <button id="continue-shopping-btn" class="secondary-button">Continuer ma recherche</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="popup-container"></div>
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="logo.png" alt="Belga Logo" class="logo">
+      </div>
+      <div class="footer-links">
+        <a href="#hero">Accueil</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">À propos</a>
+        <a href="#franchise">Franchise</a>
+      </div>
+      <div class="footer-restaurants">
+        <h4>Nos restaurants</h4>
+        <a href="/restaurants/rabat">Rabat - Belga Group</a>
+        <a href="/restaurants/casablanca">Casablanca - Belga Group</a>
+        <a href="/restaurants/tanger">Tanger - Franchise</a>
+        <a href="/restaurants/marrakech">Marrakech - Belga Group</a>
+        <a href="/restaurants/fes">Fès - Franchise</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/belga" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/belga" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@belga" target="_blank"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 Belga. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    const popupContainer = document.getElementById('popup-container');
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    const burgerMenu = document.querySelector('.burger-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    burgerMenu.addEventListener('click', () => {
+      burgerMenu.classList.toggle('change');
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        burgerMenu.classList.remove('change');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    let cart = [];
+
+    function addToCart(name, price, category) {
+      const existingItem = cart.find(item => item.name === name);
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        cart.push({ name, price, quantity: 1, category });
+      }
+      updateCart();
+      updateCartCounter();
+      animateCartIcon();
+    }
+
+    function updateCartCounter() {
+      const cartCounter = document.getElementById('cart-counter');
+      const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+      cartCounter.textContent = totalQuantity;
+      cartCounter.style.display = totalQuantity > 0 ? 'block' : 'none';
+    }
+
+    function animateCartIcon() {
+      const cartIcon = document.getElementById('cart-icon');
+      cartIcon.classList.add('cart-animation');
+      setTimeout(() => {
+        cartIcon.classList.remove('cart-animation');
+      }, 300);
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+      let total = 0;
+
+      // Clear existing content
+      cartItems.innerHTML = '';
+
+      // Group items by category
+      const categories = {};
+      cart.forEach(item => {
+        if (!categories[item.category]) {
+          categories[item.category] = [];
+        }
+        categories[item.category].push(item);
+      });
+
+      // Create HTML for each category
+      for (const [category, items] of Object.entries(categories)) {
+        const categoryDiv = document.createElement('div');
+        categoryDiv.classList.add('cart-category');
+        categoryDiv.innerHTML = `<h3>${category}</h3>`;
+
+        items.forEach(item => {
+          const itemElement = document.createElement('div');
+          itemElement.classList.add('cart-item');
+          itemElement.innerHTML = `
+            <div class="item-info">
+              <span class="item-name">${item.name}</span>
+              <span class="item-price">${item.price.toFixed(2)} MAD</span>
+            </div>
+            <div class="item-quantity">
+              <button class="quantity-btn minus">-</button>
+              <span>${item.quantity}</span>
+              <button class="quantity-btn plus">+</button>
+            </div>
+          `;
+          categoryDiv.appendChild(itemElement);
+          total += item.price * item.quantity;
+
+          const minusBtn = itemElement.querySelector('.minus');
+          const plusBtn = itemElement.querySelector('.plus');
+
+          minusBtn.addEventListener('click', () => updateQuantity(item, -1));
+          plusBtn.addEventListener('click', () => updateQuantity(item, 1));
+        });
+
+        cartItems.appendChild(categoryDiv);
+      }
+
+      cartTotal.textContent = `Total: ${total.toFixed(2)} MAD`;
+    }
+
+    function updateQuantity(item, change) {
+      item.quantity += change;
+      if (item.quantity <= 0) {
+        cart = cart.filter(cartItem => cartItem !== item);
+      }
+      updateCart();
+      updateCartCounter();
+    }
+
+    const modal = document.getElementById('cart-modal');
+    const cartIcon = document.getElementById('cart-icon');
+    const closeBtn = document.getElementsByClassName('close')[0];
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const continueShoppingBtn = document.getElementById('continue-shopping-btn');
+
+    cartIcon.onclick = function() {
+      updateCart();
+      modal.style.display = 'block';
+    }
+
+    closeBtn.onclick = function() {
+      modal.style.display = 'none';
+    }
+
+    checkoutBtn.onclick = function() {
+      window.location.href = 'https://www.paypal.com/checkoutnow';
+    }
+
+    continueShoppingBtn.onclick = function() {
+      modal.style.display = 'none';
+      document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        const menuItem = button.closest('.menu-item');
+        const name = menuItem.querySelector('.item-name').textContent.replace('i', '');
+        const price = parseFloat(menuItem.querySelector('.item-price').textContent);
+        const category = menuItem.closest('.menu-section').querySelector('h3').textContent;
+        addToCart(name, price, category);
+      });
+    });
+
+    const menuItems = [
+      {
+        id: 'mitraillette',
+        name: 'Mitraillette',
+        description: 'Un sandwich garni de frites, de viande et de sauce, une spécialité belge copieuse et savoureuse.'
+      },
+      {
+        id: 'mitraillette-geant',
+        name: 'Mitraillette Géant',
+        description: 'Une version XXL de notre Mitraillette, pour les plus gros appétits.'
+      },
+      {
+        id: 'bicky-burger',
+        name: 'Bicky Burger',
+        description: 'Un burger emblématique de la culture snack belge, avec sa sauce spéciale et ses oignons frits.'
+      },
+      {
+        id: 'petite-frite',
+        name: 'Petite Frite (100g)',
+        description: 'Une portion de 100g de nos délicieuses frites belges, croustillantes à l\'extérieur et moelleuses à l\'intérieur.'
+      },
+      {
+        id: 'grande-frite',
+        name: 'Grande Frite (250g)',
+        description: 'Une généreuse portion de 250g de nos frites belges, parfaite pour les grands appétits ou à partager.'
+      },
+      {
+        id: 'fricadelle',
+        name: 'Fricadelle',
+        description: 'Une saucisse frite typiquement belge, parfaite pour une petite faim.'
+      },
+      {
+        id: 'viandelle',
+        name: 'Viandelle',
+        description: 'Un mélange de viande parfaitement assaisonné et frit.'
+      },
+      {
+        id: 'poulycrock',
+        name: 'Poulycrock',
+        description: 'Une panure de poulet frit typiquement belge, parfaite pour une petite faim.'
+      },
+      {
+        id: 'mexicains',
+        name: 'Mexicains',
+        description: 'De délicieuses bouchées de viande épicée, croustillantes à souhait.'
+      },
+      {
+        id: 'bitterballen',
+        name: 'Bitterballen',
+        description: 'Boulettes de viande panées et frites, une spécialité néerlandaise populaire en Belgique.'
+      },
+      {
+        id: 'croquette-fromage',
+        name: 'Croquette de Fromage',
+        description: 'Une croquette croustillante, remplie de fromage fondant.'
+      },
+      {
+        id: 'croquette-crevettes',
+        name: 'Croquette de Crevettes Grises',
+        description: 'Une croquette savoureuse remplie de crevettes grises, un vrai délice.'
+      },
+      {
+        id: 'ketchup',
+        name: 'Ketchup',
+        description: 'La sauce classique qui accompagne à merveille les frites.'
+      },
+      {
+        id: 'mayonnaise',
+        name: 'Mayonnaise',
+        description: 'Une bonne mayonnaise belge, crémeuse et onctueuse.'
+      },
+      {
+        id: 'moutarde',
+        name: 'Moutarde',
+        description: 'Sauce moutarde classique, parfaite pour relever vos frites.'
+      },
+      {
+        id: 'curry-ketchup',
+        name: 'Curry Ketchup',
+        description: 'Un mélange savoureux de ketchup et d\'épices curry.'
+      },
+      {
+        id: 'samourai',
+        name: 'Samouraï',
+        description: 'Sauce piquante et crémeuse, pour les amateurs de sensations fortes.'
+      },
+      {
+        id: 'tartare',
+        name: 'Tartare',
+        description: 'Sauce à base de mayonnaise avec des herbes et cornichons finement hachés.'
+      },
+      {
+        id: 'andalouse',
+        name: 'Andalouse',
+        description: 'Sauce douce et légèrement épicée, typique de la cuisine belge.'
+      },
+      {
+        id: 'brazil',
+        name: 'Brazil',
+        description: 'Sauce exotique aux saveurs brésiliennes.'
+      },
+      {
+        id: 'joppie',
+        name: 'Joppie',
+        description: 'Sauce douce et épicée, populaire aux Pays-Bas et en Belgique.'
+      },
+      {
+        id: 'pili-pili',
+        name: 'Pili-pili',
+        description: 'Sauce épicée, typique de la cuisine belge.'
+      },
+      {
+        id: 'poivre',
+        name: 'Poivre',
+        description: 'Sauce crémeuse au poivre, parfaite pour les amateurs de saveurs prononcées.'
+      },
+      {
+        id: 'aioli',
+        name: 'Aïoli',
+        description: 'Sauce à base d\'ail et d\'huile d\'olive, typique du sud de la France.'
+      },
+      {
+        id: 'riche',
+        name: 'Riche',
+        description: 'Sauce crémeuse et savoureuse, un classique de la friterie belge.'
+      },
+      {
+        id: 'bicky-rouge',
+        name: 'Bicky Rouge',
+        description: 'Sauce emblématique de la culture du snack belge, légèrement épicée.'
+      },
+      {
+        id: 'bicky-jaune',
+        name: 'Bicky Jaune',
+        description: 'Variante jaune de la sauce Bicky, à base de mayonnaise et de moutarde.'
+      },
+      {
+        id: 'bicky-brune',
+        name: 'Bicky Brune',
+        description: 'Version brune de la sauce Bicky, plus relevée et épicée.'
+      },
+      {
+        id: 'eau-plate',
+        name: 'Eau plate (33 cl)',
+        description: 'Eau minérale plate, rafraîchissante et pure.'
+      },
+      {
+        id: 'eau-gazeuse',
+        name: 'Eau gazeuse (33 cl)',
+        description: 'Eau minérale pétillante, rafraîchissante avec des bulles.'
+      },
+      {
+        id: 'coca-cola',
+        name: 'Coca-Cola (33 cl)',
+        description: 'Le soda emblématique, rafraîchissant et pétillant.'
+      },
+      {
+        id: 'coca-cola-zero',
+        name: 'Coca-Cola Zero (33 cl)',
+        description: 'Tout le goût du Coca-Cola, sans sucre.'
+      },
+      {
+        id: 'fanta',
+        name: 'Fanta (33 cl)',
+        description: 'Boisson gazeuse fruitée et rafraîchissante.'
+      },
+      {
+        id: 'sprite',
+        name: 'Sprite (33 cl)',
+        description: 'Limonade citronnée, pétillante et désaltérante.'
+      },
+      {
+        id: 'tropico',
+        name: 'Tropico (33 cl)',
+        description: 'Boisson fruitée aux saveurs exotiques.'
+      },
+      {
+        id: 'oasis-tropical',
+        name: 'Oasis Tropical (33 cl)',
+        description: 'Cocktail de fruits tropicaux rafraîchissant.'
+      },
+      {
+        id: 'ice-tea-classique',
+        name: 'Ice Tea Classique (33 cl)',
+        description: 'Thé glacé classique, rafraîchissant et légèrement sucré.'
+      },
+      {
+        id: 'ice-tea-peche',
+        name: 'Ice Tea Pêche (33 cl)',
+        description: 'Thé glacé saveur pêche, doux et fruité.'
+      },
+      {
+        id: 'ice-tea-green',
+        name: 'Ice Tea Green (33 cl)',
+        description: 'Thé vert glacé, rafraîchissant et légèrement amer.'
+      },
+      {
+        id: 'jupiler',
+        name: 'Jupiler 0.0%',
+        description: 'Une bonne bière sans alcool avec un goût authentique.'
+      },
+      {
+        id: 'duvel',
+        name: 'Duvel 0.0%',
+        description: 'Une délicieuse bière belge, sans alcool.'
+      },
+      {
+        id: 'orval',
+        name: 'Orval 0.0%',
+        description: 'Bière désaltérante avec un goût unique, sans alcool.'
+      },
+      {
+        id: 'lindemans-pecheresse',
+        name: 'Lindemans Pêcheresse 0.0%',
+        description: 'Une bière sans alcool au goût de pêche, douce et fruitée.'
+      },
+      {
+        id: 'leffe-blonde',
+        name: 'Leffe Blonde 0.0%',
+        description: 'Une bière blonde sans alcool, équilibrée et savoureuse.'
+      }
+    ];
+  
+    function createPopup(item) {
+      const popup = document.createElement('div');
+      popup.classList.add('popup');
+      popup.id = `popup-${item.id}`;
+      popup.innerHTML = `
+      <div class="popup-content">
+        <span class="popup-close">&times;</span>
+        <h3>${item.name}</h3>
+        <p>${item.description}</p>
+      </div>
+    `;
+      popupContainer.appendChild(popup);
+      
+      const closeBtn = popup.querySelector('.popup-close');
+      closeBtn.onclick = function() {
+        popup.style.display = 'none';
+      }
+    }
+  
+    menuItems.forEach(createPopup);
+  
+    document.querySelectorAll('.info-icon').forEach(icon => {
+      icon.addEventListener('click', (e) => {
+        const itemId = e.target.getAttribute('data-item');
+        const popup = document.getElementById(`popup-${itemId}`);
+        popup.style.display = 'block';
+      });
+    });
+  
+    window.onclick = function(event) {
+      if (event.target.classList.contains('popup')) {
+        event.target.style.display = 'none';
+      }
+    }
+
+    document.querySelectorAll('.footer-restaurants a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const restaurantName = this.textContent;
+        alert(`Page du restaurant ${restaurantName} en cours de développement. Revenez bientôt !`);
+      });
+    });
+  </script>
+</body>
+</html>
